@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<process.h>
+#include <set>
+using namespace std;
+int main(){
+	int a[100],n=0,temp,geshu;
+	set<int> s;
+	char ch;
+	while(scanf("%d%c",&temp,&ch)){
+		a[n++]=temp;
+		s.insert(temp);
+		if(ch=='\n')
+			break;
+	}
+	geshu=a[n-1];
+	set<int>::iterator it;
+	it=s.find(geshu);
+	s.erase(it);
+	int k=0;
+	for(it=s.begin();it!=s.end();it++,k++)
+	{
+		if (k<geshu)
+			printf("%d ",*it);
+		else
+			break;
+	}
+	system("pause");
+	return 0;
+}
