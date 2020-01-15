@@ -1,0 +1,41 @@
+#include<iostream>  
+#include<cstdio>  
+  
+void Merge(int s[],int t[],int b,int m,int e)
+{   int i=b; 
+    int j=m+1;  
+    int k=0; 
+    while(i<=m&&j<=e){  
+        if(s[i]<=s[j])t[k++]=s[i++];  
+        else t[k++]=s[j++];  
+    }  
+    while(i<=m){  
+        t[k++]=s[i++];  
+    }  
+    while(j<=e){  
+        t[k++]=s[j++];  
+    }  
+for(int i=0;i<k;i++)
+{      
+s[b+i]=t[i];  
+    }  
+}  
+void MSort(int s[],int t[],int b,int e){  
+    if(b<e){  
+        int m;  
+        m=(b+e)/2;  
+        MSort(s,t,b,m);  
+        MSort(s,t,m+1,e);  
+        Merge(s,t,b,m,e);  
+    }  
+}     
+int main()
+{  
+int a[10]={2,5,1,3,4,9,7,8,6,0};  
+    int temp[10];  
+    MSort(a,temp,0,9);  
+    for(int i=0;i<10;i++){  
+        printf("%d ",a[i]);  
+    }  
+    printf("\n");  
+} 
