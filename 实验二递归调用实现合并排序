@@ -1,3 +1,5 @@
+//利用递归方式实现合并排序算法
+//将一个无序的序列分组，直到分为每两个元素一组，小组内排序，然后合并成一个有序的序列 
 #include<iostream>  
 #include<cstdio>  
   
@@ -15,9 +17,9 @@ void Merge(int s[],int t[],int b,int m,int e)
     while(j<=e){  
         t[k++]=s[j++];  
     }  
-for(int i=0;i<k;i++)
+	for(int i=0;i<k;i++)
 {      
-s[b+i]=t[i];  
+	s[b+i]=t[i];  
     }  
 }  
 void MSort(int s[],int t[],int b,int e){  
@@ -31,7 +33,7 @@ void MSort(int s[],int t[],int b,int e){
 }     
 int main()
 {  
-int a[10]={2,5,1,3,4,9,7,8,6,0};  
+	int a[10]={2,5,1,3,4,9,7,8,6,0};  
     int temp[10];  
     MSort(a,temp,0,9);  
     for(int i=0;i<10;i++){  
