@@ -1,19 +1,20 @@
+//利用贪心算法解决0-1背包问题 
 #include <stdio.h>
-#define M 5
+#define M 5//定义一个node结构体，用来存放物体的重量和价值 
 struct node{
-  float value;
-  float weight;
-  int flag;
+  float value;//价值 
+  float weight;//重量 
+  int flag;//用来判别这个物体是否装进背包 
 }Node[M],temp;
-float Value,curvalue=0;
-float Weight,curweight=0; 
+float Value,curvalue=0;//总价值和当前价值 
+float Weight,curweight=0; //背包的最大承受重量和现有的重量 
 //按性价比排序
 void sort(){
-     int i,j;
-	 for(i=0;i<M-1;i++){
+     int i,j;//遍历所有的物品 
+	 for(i=0;i<M-1;i++){//判断性价比较高性价比 
 		 for(j=i+1;j<M;j++){
 if((Node[i].value/(float)Node[i].weight)<Node[j].value/(float)Node[j].weight){
-			    temp=Node[i];
+			    temp=Node[i];//进行交换 
 				Node[i]=Node[j];
 				Node[j]=temp;
 			 }
@@ -23,13 +24,13 @@ if((Node[i].value/(float)Node[i].weight)<Node[j].value/(float)Node[j].weight){
  
 //装载主要方法
 void load(){
-	int i;
+	int i;//遍历所有的物品 
 	for(i=0;i<M;i++){
-		if((Node[i].weight+curweight)<=Weight){
+		if((Node[i].weight+curweight)<=Weight){//判断加入物品是否大于背包所能承载的最大重量 
 		 curvalue+=Node[i].value;
 		 curweight+=Node[i].weight;
-		 Node[i].flag=1;
-		}else{
+		 Node[i].flag=1;//进行标记 
+		}else{//进行标记 
 		 Node[i].flag=0;
 		}	
 	}
